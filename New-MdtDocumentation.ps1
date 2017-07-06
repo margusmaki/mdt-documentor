@@ -5,12 +5,13 @@
 
 <#
 .SYNOPSIS
-	Demonstrates script functionality using Microsoft Word, PDF, formatted text or HTML.
+	Documents a Microsoft Deployment Toolkit Share.
 .DESCRIPTION
-	Creates a sample report of various Word functionality using Microsoft Word, PDF, formatted text, HTML and PowerShell.
-	Creates a document named Script_Template.docx (or .PDF or .TXT or .HTML).
-	Word and PDF documents include a Cover Page, Table of Contents and Footer.
-	Includes support for the following language versions of Microsoft Word:
+	Creates an inventory of the contents of a Microsoft Deployment Toolkit deployment share using Microsoft PowerShell in Word, plain text or HTML.
+	
+	This Script requires at least PowerShell version 3 but runs best in version 5. Word is NOT needed to run the script. This script will output in Text and HTML.
+	
+	Word and PDF Document includes a Cover Page, Table of Contents and Footer. Includes support for the following language versions of Microsoft Word:
 		Catalan
 		Chinese
 		Danish
@@ -185,7 +186,7 @@
 	This parameter is disabled by default.
 	This parameter has an alias of SI.
 .EXAMPLE
-	PS C:\PSScript > .\ScriptTemplate.ps1
+	PS C:\PSScript > .\New-MdtDocumentation.ps1
 	
 	Will use all default values.
 	HKEY_CURRENT_USER\Software\Microsoft\Office\Common\UserInfo\CompanyName="Carl Webster" or
@@ -196,7 +197,7 @@
 	Sideline for the Cover Page format.
 	Administrator for the User Name.
 .EXAMPLE
-	PS C:\PSScript > .\ScriptTemplate.ps1 -PDF
+	PS C:\PSScript > .\New-MdtDocumentation.ps1 -PDF
 	
 	Will use all default values and save the document as a PDF file.
 	HKEY_CURRENT_USER\Software\Microsoft\Office\Common\UserInfo\CompanyName="Carl Webster" or
@@ -207,7 +208,7 @@
 	Sideline for the Cover Page format.
 	Administrator for the User Name.
 .EXAMPLE
-	PS C:\PSScript > .\ScriptTemplate.ps1 -TEXT
+	PS C:\PSScript > .\New-MdtDocumentation.ps1 -TEXT
 
 	Will use all default values and save the document as a formatted text file.
 	HKEY_CURRENT_USER\Software\Microsoft\Office\Common\UserInfo\CompanyName="Carl Webster" or
@@ -218,7 +219,7 @@
 	Sideline for the Cover Page format.
 	Administrator for the User Name.
 .EXAMPLE
-	PS C:\PSScript > .\ScriptTemplate.ps1 -HTML
+	PS C:\PSScript > .\New-MdtDocumentation.ps1 -HTML
 
 	This parameter is reserved for a future update and no output is created at this time.
 	
@@ -231,14 +232,14 @@
 	Sideline for the Cover Page format.
 	Administrator for the User Name.
 .EXAMPLE
-	PS C:\PSScript .\ScriptTemplate.ps1 -CompanyName "Carl Webster Consulting" -CoverPage "Mod" -UserName "Carl Webster"
+	PS C:\PSScript .\New-MdtDocumentation.ps1 -CompanyName "Carl Webster Consulting" -CoverPage "Mod" -UserName "Carl Webster"
 
 	Will use:
 		Carl Webster Consulting for the Company Name.
 		Mod for the Cover Page format.
 		Carl Webster for the User Name.
 .EXAMPLE
-	PS C:\PSScript .\ScriptTemplate.ps1 -CompanyName "Sherlock Holmes Consulting" `
+	PS C:\PSScript .\New-MdtDocumentation.ps1 -CompanyName "Sherlock Holmes Consulting" `
 	-CoverPage Exposure -UserName "Dr. Watson" `
 	-CompanyAddress "221B Baker Street, London, England" `
 	-CompanyFax "+44 1753 276600" `
@@ -252,7 +253,7 @@
 		+44 1753 276600 for the Company Fax.
 		+44 1753 276200 for the Compnay Phone.
 .EXAMPLE
-	PS C:\PSScript .\ScriptTemplate.ps1 -CompanyName "Sherlock Holmes Consulting" `
+	PS C:\PSScript .\New-MdtDocumentation.ps1 -CompanyName "Sherlock Holmes Consulting" `
 	-CoverPage Facet -UserName "Dr. Watson" `
 	-CompanyEmail SuperSleuth@SherlockHolmes.com
 
@@ -262,14 +263,14 @@
 		Dr. Watson for the User Name.
 		SuperSleuth@SherlockHolmes.com for the Compnay Email.
 .EXAMPLE
-	PS C:\PSScript .\ScriptTemplate.ps1 -CN "Carl Webster Consulting" -CP "Mod" -UN "Carl Webster"
+	PS C:\PSScript .\New-MdtDocumentation.ps1 -CN "Carl Webster Consulting" -CP "Mod" -UN "Carl Webster"
 
 	Will use:
 		Carl Webster Consulting for the Company Name (alias CN).
 		Mod for the Cover Page format (alias CP).
 		Carl Webster for the User Name (alias UN).
 .EXAMPLE
-	PS C:\PSScript > .\ScriptTemplate.ps1 -AddDateTime
+	PS C:\PSScript > .\New-MdtDocumentation.ps1 -AddDateTime
 	
 	Will use all default values.
 	HKEY_CURRENT_USER\Software\Microsoft\Office\Common\UserInfo\CompanyName="Carl Webster" or
@@ -285,7 +286,7 @@
 	June 1, 2014 at 6PM is 2014-06-01_1800.
 	Output filename will be Script_Template_2014-06-01_1800.docx
 .EXAMPLE
-	PS C:\PSScript > .\ScriptTemplate.ps1 -PDF -AddDateTime
+	PS C:\PSScript > .\New-MdtDocumentation.ps1 -PDF -AddDateTime
 	
 	Will use all default values and save the document as a PDF file.
 	HKEY_CURRENT_USER\Software\Microsoft\Office\Common\UserInfo\CompanyName="Carl Webster" or
@@ -301,7 +302,7 @@
 	June 1, 2014 at 6PM is 2014-06-01_1800.
 	Output filename will be Script_Template_2014-06-01_1800.PDF
 .EXAMPLE
-	PS C:\PSScript > .\ScriptTemplate.ps1 -Hardware
+	PS C:\PSScript > .\New-MdtDocumentation.ps1 -Hardware
 	
 	Will use all default values.
 	HKEY_CURRENT_USER\Software\Microsoft\Office\Common\UserInfo\CompanyName="Carl Webster" or
@@ -314,7 +315,7 @@
 	localhost for running hardware inventory.
 	localhost will be replaced by the actual computer name.
 .EXAMPLE
-	PS C:\PSScript > .\ScriptTemplate.ps1 -Hardware -ComputerName 192.168.1.51
+	PS C:\PSScript > .\New-MdtDocumentation.ps1 -Hardware -ComputerName 192.168.1.51
 	
 	Will use all default values.
 	HKEY_CURRENT_USER\Software\Microsoft\Office\Common\UserInfo\CompanyName="Carl Webster" or
@@ -327,7 +328,7 @@
 	192.168.1.51 for running hardware inventory.
 	192.168.1.51 will be replaced by the actual computer name, if possible.
 .EXAMPLE
-	PS C:\PSScript > .\ScriptTemplate.ps1 -Folder \\FileServer\ShareName
+	PS C:\PSScript > .\New-MdtDocumentation.ps1 -Folder \\FileServer\ShareName
 	
 	Will use all default values.
 	HKEY_CURRENT_USER\Software\Microsoft\Office\Common\UserInfo\CompanyName="Carl Webster" or
@@ -340,7 +341,7 @@
 	
 	Output file will be saved in the path \\FileServer\ShareName
 .EXAMPLE
-	PS C:\PSScript > .\ScriptTemplate.ps1 -SmtpServer mail.domain.tld -From XDAdmin@domain.tld -To ITGroup@domain.tld
+	PS C:\PSScript > .\New-MdtDocumentation.ps1 -SmtpServer mail.domain.tld -From XDAdmin@domain.tld -To ITGroup@domain.tld
 	
 	Will use all Default values.
 	HKEY_CURRENT_USER\Software\Microsoft\Office\Common\UserInfo\CompanyName="Carl Webster" or
@@ -355,7 +356,7 @@
 	Script will use the default SMTP port 25 and will not use SSL.
 	If the current user's credentials are not valid to send email, the user will be prompted to enter valid credentials.
 .EXAMPLE
-	PS C:\PSScript > .\ScriptTemplate.ps1 -SmtpServer smtp.office365.com -SmtpPort 587 -UseSSL -From Webster@CarlWebster.com -To ITGroup@CarlWebster.com
+	PS C:\PSScript > .\New-MdtDocumentation.ps1 -SmtpServer smtp.office365.com -SmtpPort 587 -UseSSL -From Webster@CarlWebster.com -To ITGroup@CarlWebster.com
 	
 	Will use all Default values.
 	HKEY_CURRENT_USER\Software\Microsoft\Office\Common\UserInfo\CompanyName="Carl Webster" or
@@ -374,7 +375,7 @@
 	No objects are output from this script.  
 	This script creates a Word, PDF, Formatted Text or HTML document.
 .NOTES
-	NAME: ScriptTemplate.ps1
+	NAME: New-MdtDocumentation.ps1
 	VERSION: 1.00
 	AUTHOR: Carl Webster, Michael B. Smith, Iain Brighton, Jeff Wouters, Barry Schiffer, Jim Moyle
 	LASTEDIT: June 8, 2017
